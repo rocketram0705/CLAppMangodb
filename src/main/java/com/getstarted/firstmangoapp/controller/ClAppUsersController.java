@@ -3,6 +3,7 @@ package com.getstarted.firstmangoapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +14,8 @@ import com.getstarted.firstmangoapp.model.Users;
 import com.getstarted.firstmangoapp.services.UserServices;
 
 
-@RestController(value = "/")
+@RestController
+@RequestMapping("/api/v1/user")
 public class ClAppUsersController {
     
     @Autowired
@@ -22,7 +24,7 @@ public class ClAppUsersController {
     ObjectMapper objectMapper = new ObjectMapper();
         
 
-   @RequestMapping(path ="/createNewUser") 
+    @PostMapping("/createNewUser")
     public ResponseEntity<String> createNewUserEntity(Users user) throws Exception{
     
        Users newUser = userServices.createNewUser(user);
